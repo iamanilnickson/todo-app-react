@@ -12,13 +12,42 @@ export default function TodoList(props) {
       <ul>
         {props.todoList.map((todo, index) => {
           return (
-            <li
-              onClick={() => props.function(index)}
-              key={index}
-              style={props.strike ? { textDecoration: "line-through" } : {}}
+            <div
+              style={
+                props.strike
+                  ? {
+                      margin: 10,
+                      padding: 10,
+                      borderRadius: 10,
+                      backgroundColor: "green",
+                      width: 200,
+                    }
+                  : {
+                      margin: 10,
+                      padding: 10,
+                      borderRadius: 10,
+                      backgroundColor: "#000333",
+                      width: 200,
+                    }
+              }
             >
-              {todo}
-            </li>
+              <li
+                onClick={() => props.function(index)}
+                key={index}
+                style={
+                  props.strike
+                    ? {
+                        textDecoration: "line-through",
+                        color: "white",
+                        cursor: "pointer",
+                        userSelect: "none",
+                      }
+                    : { color: "white", cursor: "pointer", userSelect: "none" }
+                }
+              >
+                {todo}
+              </li>
+            </div>
           );
         })}
       </ul>
